@@ -1,6 +1,6 @@
 import {readXlsx} from './xlsx.mjs';
 import{filterRows,distribution,scale,mean,comments,themes,redact,diagnostics,csv}from'./analytics.mjs';
-let base=await(await fetch('./schema.json')).json(),page=0,mode='presentation',filters={},showFilters=false,question=13,voiceQuestion='',search='',theme='',review={};
+let base=await(await fetch('./schema.json?v=39463e63')).json(),page=0,mode='presentation',filters={},showFilters=false,question=13,voiceQuestion='',search='',theme='',review={};
 try{review=JSON.parse(localStorage.getItem('projudi-review-'+base.sha256)||'{}')}catch{}
 const root=document.querySelector('#root'),fmt=n=>n===null?'—':n.toLocaleString('pt-BR',{maximumFractionDigits:1}),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),q=i=>base.questions[i],rows=()=>filterRows(base.rows,filters);
 const chapters=['A pesquisa','Quem respondeu','Percepção geral','Uso e estabilidade','Impacto no trabalho','Oportunidades','A voz dos usuários','Entre perfis','Preservar e melhorar','Do achado ao requisito'];
